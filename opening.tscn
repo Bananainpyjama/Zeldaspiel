@@ -1,0 +1,77 @@
+[gd_scene load_steps=9 format=3 uid="uid://ce6cdmqy5f47r"]
+
+[ext_resource type="Texture2D" uid="uid://cj3rxmahvs1se" path="res://sprites/backgroundopening.png" id="1_pk062"]
+[ext_resource type="Texture2D" uid="uid://qpifl4ga0vca" path="res://sprites/obgwateranimation.png" id="2_gafq3"]
+[ext_resource type="Texture2D" uid="uid://cpp1wvvls5n35" path="res://sprites/obgparalexcloud.png" id="3_y6ged"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gafq3"]
+atlas = ExtResource("2_gafq3")
+region = Rect2(0, 0, 265, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y6ged"]
+atlas = ExtResource("2_gafq3")
+region = Rect2(265, 0, 265, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fvetl"]
+atlas = ExtResource("2_gafq3")
+region = Rect2(530, 0, 265, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jo2c7"]
+atlas = ExtResource("2_gafq3")
+region = Rect2(795, 0, 265, 224)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_drfco"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gafq3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y6ged")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fvetl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jo2c7")
+}],
+"loop": true,
+"name": &"water",
+"speed": 2.0
+}]
+
+[node name="opening" type="Node2D"]
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+repeat_size = Vector2(448, 0)
+ignore_camera_scroll = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
+position = Vector2(132, 112)
+texture = ExtResource("1_pk062")
+hframes = 9
+metadata/_edit_lock_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(133, 113)
+sprite_frames = SubResource("SpriteFrames_drfco")
+animation = &"water"
+autoplay = "water"
+frame_progress = 0.816562
+
+[node name="Parallax2D2" type="Parallax2D" parent="."]
+repeat_size = Vector2(448, 0)
+autoscroll = Vector2(-8, 0)
+repeat_times = 2
+ignore_camera_scroll = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D2"]
+texture_filter = 1
+position = Vector2(131, 114)
+texture = ExtResource("3_y6ged")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Parallax2D2"]
+texture_filter = 1
+position = Vector2(317, 114)
+texture = ExtResource("3_y6ged")
